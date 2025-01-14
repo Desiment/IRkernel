@@ -4,7 +4,7 @@ prepare_mimebundle_kernel <- function(obj, handle_display_error = log_error) {
     text_repr <- text_bundle$data[['text/plain']]
     
     # if the text/plain repr returns nothing, we also do
-    if (is.null(text_repr) || nchar(text_repr) == 0L)
+    if (is.null(text_repr) || all(nchar(text_repr) == 0L))
         return(list(data = NULL, metadata = NULL))
     
     if (getOption('jupyter.rich_display')) {
